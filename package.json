@@ -1,0 +1,19 @@
+{
+  "name": "react-usereducermap",
+  "version": "0.1.0",
+  "description": "React reducer that maps action types and rules to handler functions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wombat42/react-usereducermap.git"
+  },
+  "author": "Andy Wilson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Wombat42/react-usereducermap/issues"
+  },
+  "homepage": "https://github.com/Wombat42/react-usereducermap#readme"
+}
