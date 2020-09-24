@@ -1,6 +1,6 @@
 {
   "name": "react-usereducermap",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "React reducer that maps action types and rules to handler functions",
   "main": "dist/cjs.js",
   "scripts": {
