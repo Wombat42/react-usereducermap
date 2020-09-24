@@ -1,11 +1,11 @@
-import { renderHook, act } from "@testing-library/react-hooks";
-import { useReducerMap } from "../src/reducermap";
+import { renderHook, act } from '@testing-library/react-hooks';
+import { useReducerMap } from '../src/usereducermap';
 
-describe("Invalid map configurations and other errors", () => {
+describe('Invalid map configurations and other errors', () => {
   function runCommon(result, errMsg, type) {
     const [, dispatch] = result.current;
     act(() => {
-      dispatch({ type: "a" });
+      dispatch({ type: 'a' });
     });
 
     let errorMessage = errMsg + type;
@@ -14,78 +14,78 @@ describe("Invalid map configurations and other errors", () => {
 
   it.each`
     actionType             | type
-    ${[null]}              | ${"object"}
-    ${null}                | ${"object"}
-    ${true}                | ${"boolean"}
-    ${false}               | ${"boolean"}
-    ${9}                   | ${"number"}
-    ${""}                  | ${"string"}
-    ${{}}                  | ${"object"}
-    ${[9]}                 | ${"number"}
-    ${[""]}                | ${"string"}
-    ${[{}]}                | ${"object"}
-    ${[() => {}, 9]}       | ${"number"}
-    ${[() => {}, ""]}      | ${"string"}
-    ${[() => {}, [""]]}    | ${"string"}
-    ${[() => {}, [null]]}  | ${"object"}
-    ${[() => {}, [9]]}     | ${"number"}
-    ${[() => {}, [{}]]}    | ${"object"}
-    ${[() => {}, [true]]}  | ${"boolean"}
-    ${[() => {}, [false]]} | ${"boolean"}
-  `("Fault due to invalid handler type", ({ actionType, type }) => {
+    ${[null]}              | ${'object'}
+    ${null}                | ${'object'}
+    ${true}                | ${'boolean'}
+    ${false}               | ${'boolean'}
+    ${9}                   | ${'number'}
+    ${''}                  | ${'string'}
+    ${{}}                  | ${'object'}
+    ${[9]}                 | ${'number'}
+    ${['']}                | ${'string'}
+    ${[{}]}                | ${'object'}
+    ${[() => {}, 9]}       | ${'number'}
+    ${[() => {}, '']}      | ${'string'}
+    ${[() => {}, ['']]}    | ${'string'}
+    ${[() => {}, [null]]}  | ${'object'}
+    ${[() => {}, [9]]}     | ${'number'}
+    ${[() => {}, [{}]]}    | ${'object'}
+    ${[() => {}, [true]]}  | ${'boolean'}
+    ${[() => {}, [false]]} | ${'boolean'}
+  `('Fault due to invalid handler type', ({ actionType, type }) => {
     const { result } = renderHook(() => {
       return useReducerMap(
         {
-          a: actionType
+          a: actionType,
         },
         {}
       );
     });
-    runCommon(result, "Handler is an invalid type: ", type);
+    runCommon(result, 'Handler is an invalid type: ', type);
   });
 
   it.each`
     actionType             | type
-    ${[[() => {}, ""]]}    | ${"string"}
-    ${[[() => {}, null]]}  | ${"object"}
-    ${[[() => {}, 9]]}     | ${"number"}
-    ${[[() => {}, true]]}  | ${"boolean"}
-    ${[[() => {}, false]]} | ${"boolean"}
-  `("Fault due to invalid helper type", ({ actionType, type }) => {
+    ${[[() => {}, '']]}    | ${'string'}
+    ${[[() => {}, null]]}  | ${'object'}
+    ${[[() => {}, 9]]}     | ${'number'}
+    ${[[() => {}, true]]}  | ${'boolean'}
+    ${[[() => {}, false]]} | ${'boolean'}
+  `('Fault due to invalid helper type', ({ actionType, type }) => {
     const { result } = renderHook(() => {
       return useReducerMap(
         {
-          a: actionType
+          a: actionType,
         },
         {}
       );
     });
-    runCommon(result, "Helper object is an invalid type: ", type);
+    runCommon(result, 'Helper object is an invalid type: ', type);
   });
 
-  it("Fault due to empty handler array", () => {
+  it('Fault due to empty handler array', () => {
     expect.assertions(1);
     const { result } = renderHook(() => {
       return useReducerMap(
         {
-          a: []
+          a: [],
         },
         {}
       );
     });
     const [, dispatch] = result.current;
     act(() => {
-      dispatch({ type: "a" });
+      dispatch({ type: 'a' });
     });
-    expect(result.error).toEqual(Error("No action handler for type: a"));
+    expect(result.error).toEqual(Error('No action handler for type: a'));
   });
 
-  it("Fault by dispatching to unknown action type", () => {
+  it('Fault by dispatching to unknown action type', () => {
     expect.assertions(1);
     const { result } = renderHook(() => {
       return useReducerMap(
         {
-          a: () => {}
+          a: () => {},
         },
         {}
       );
@@ -93,8 +93,8 @@ describe("Invalid map configurations and other errors", () => {
     const [, dispatch] = result.current;
 
     act(() => {
-      dispatch({ type: "b" });
+      dispatch({ type: 'b' });
     });
-    expect(result.error).toEqual(Error("No action handler for type: b"));
+    expect(result.error).toEqual(Error('No action handler for type: b'));
   });
 });

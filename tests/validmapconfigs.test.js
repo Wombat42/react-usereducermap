@@ -1,5 +1,5 @@
 import { renderHook, act } from '@testing-library/react-hooks';
-import { useReducerMap } from '../src/reducermap';
+import { useReducerMap } from '../src/usereducermap';
 
 describe('Valid map configurations', () => {
   function runCommon(result, expectedState) {
