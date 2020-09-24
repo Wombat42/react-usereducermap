@@ -44,7 +44,6 @@ export function useReducerMap(actionMap, initialValue) {
     throw new TypeError('ActionMap is not defined');
   }
   // Should add a validation of the actionMap instead or checking at run time.
-
   const ref = React.useRef();
   function mappingFunction(state, action) {
     let newState = { ...state };
