@@ -152,4 +152,4 @@ You can dispatch from an action handler. You can cause infinite loops, so watch 
   - Evaluated after explicit action handlers
   - Good for handling events with a common prefix. Like if all your API callers will prefix an error action like `{type: 'ERROR_API_GETHOST'}` and `{type: 'ERROR_API_GETUGLYPHOTO'}`, then you can have a regex like `/^ERROR/` and handle the API errors in a common way rather than in an explicitly named action handler for each.
   - Throws a `TypeError` if you try to use it.
-- Dispatching an object like `{type: 'patterns'}` will throw an exception.
+  - Dispatching an object like `{type: 'patterns'}` will throw an exception.
