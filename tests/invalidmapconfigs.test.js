@@ -97,4 +97,15 @@ describe('Invalid map configurations and other errors', () => {
     });
     expect(result.error).toEqual(Error('No action handler for type: b'));
   });
+
+  it('Fault by using a reserved word: patterns', () => {
+    expect(() =>
+      useReducerMap(
+        {
+          patterns: [/^ERROR/i, () => {}],
+        },
+        {}
+      )
+    ).toThrowError('"patterns" is a reserved action mapping and will be defined in a future release.');
+  });
 });

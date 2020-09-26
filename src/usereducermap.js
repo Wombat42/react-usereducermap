@@ -42,6 +42,8 @@ function callLastHandler(stack, state, data, meta) {
 export function useReducerMap(actionMap, initialValue) {
   if (!actionMap) {
     throw new TypeError('ActionMap is not defined');
+  } else if (typeof actionMap.patterns !== 'undefined') {
+    throw new TypeError('"patterns" is a reserved action mapping and will be defined in a future release.');
   }
   // Should add a validation of the actionMap instead or checking at run time.
   const ref = React.useRef();

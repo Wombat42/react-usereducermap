@@ -5,6 +5,7 @@
   "main": "dist/cjs.js",
   "scripts": {
     "test": "jest",
+    "test:watch": "jest --watch",
     "lint": "eslint --ext .js,.jsx,.ts  ./src ./tests",
     "build": "rollup --config"
   },
