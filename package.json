@@ -2,6 +2,13 @@
   "name": "react-usereducermap",
   "version": "0.1.2",
   "description": "React reducer that maps action types and rules to handler functions",
+  "keywords": [
+    "usereducer",
+    "react",
+    "hook",
+    "react-hook",
+    "state"
+  ],
   "main": "dist/cjs.js",
   "scripts": {
     "test": "jest",
